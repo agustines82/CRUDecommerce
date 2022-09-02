@@ -74,14 +74,17 @@
                         <label for="Password1Registro" class="form-label">Contraseña</label>
                         <input type="password" class="form-control" id="Password1Registro"
                             placeholder="8 caracteres alfanumericos" minlength="8" maxlength="8" required />
+                        <div class="invalid-feedback"> La contraseña de 8 caracteres debe de tener al menos una letra
+                            minúscula, una letra mayúscula y un dígito</div>
                     </div>
                     <div class="mb-3">
                         <label for="Password2Registro" class="form-label">Repetir Contraseña</label>
                         <input type="password" class="form-control" id="Password2Registro"
                             placeholder="8 caracteres alfanumericos" minlength="8" maxlength="8" required />
+                        <div class="invalid-feedback"> La contraseña debe ser igual</div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary text-center">Enviar</button>
+                        <button type="submit" id="btnRegistro" class="btn btn-primary text-center">Enviar</button>
                     </div>
                 </form>
             </article>
@@ -95,7 +98,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
-    <script src="../js/helpers.js"></script>
+    <script src="../js/registro.js" type="module"></script>
 
 </body>
 

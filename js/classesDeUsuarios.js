@@ -1,4 +1,4 @@
-class Administrador {
+export class Administrador {
     constructor(nombreUsuario, email, contrasenia, repetirContrasenia) {
         this.nombre = nombreUsuario;
         this.email = email;
@@ -40,8 +40,7 @@ class Administrador {
     </ul>`);
     }
 }
-
-class Invitado extends Administrador {
+export class Invitado extends Administrador {
     constructor(nombreUsuario, direccion, email, contrasenia, repetirContrasenia) {
         super(nombreUsuario, email, contrasenia, repetirContrasenia);
         this.direccion = direccion;
