@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Agustin Sampayo, Lucia Gonzalez Vidalon, Tomas Luna, Cristian Uncos, Yessica Juarez" />
+    <meta name="description"
+        content="Comprá online y pagalo en hasta 12 cuotas con envios a todo el pais. 40% off en tecnologia. Tienda oficial DronesLandia en Argentina. Tenemos los Mejores Drones Importados Phantom, Mavic y mucho más ¡Consultanos Ahora!." />
+    <meta name="Keyworks" content="e-commerce, compras, drones , dron " />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>DronesLandia</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark py-3">
+            <div class="container">
+                <a class="navbar-brand fs-3 text-light" href="../index.html">DRONLANDIA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item fs-3">
+                            <a class="nav-link active text-light" aria-current="page" href="../index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item fs-3">
+                            <a class="nav-link text-light" href="nosotros.html">Nosotros</a>
+                        </li>
+                        <li class="nav-item fs-3">
+                            <a class="nav-link text-light" href="admin.html">Administrador</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="py-5">
+            <h1 class="text-center display-5">Completa tus datos y comienza a volar.</h1>
+            <hr />
+            <div class="contanier">
+                <img class="w-100 h-25 bannerRegistro" src="../img/bannerRegistro.png" alt="dron1" />
+            </div>
+        </section>
+        <section class="container">
+            <h2 class="text-center display-5">Regístrate</h2>
+            <hr />
+            <article class="container">
+                <form class="bg-light p-3" id="formRegistro">
+                    <div class="mb-3">
+                        <label for="nombreRegistro">Nombre de Usuario</label>
+                        <input type="text" id="nombreRegistro" class="form-control" placeholder="Ej:Maiko Pilot"
+                            minlength="3" maxlength="35" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccionRegistro">Dirección de Envio</label>
+                        <input type="text" id="direccionRegistro" class="form-control"
+                            placeholder="Ej:Av. Libertador 3597" minlength="4" maxlength="50" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailRegistro" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="emailRegistro" aria-describedby="emailHelp"
+                            placeholder="Ej:samkolder@gmail.com" minlength="10" maxlength="50" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="Password1Registro" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="Password1Registro"
+                            placeholder="8 caracteres alfanumericos" minlength="8" maxlength="8" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="Password2Registro" class="form-label">Repetir Contraseña</label>
+                        <input type="password" class="form-control" id="Password2Registro"
+                            placeholder="8 caracteres alfanumericos" minlength="8" maxlength="8" required />
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary text-center">Enviar</button>
+                    </div>
+                </form>
+            </article>
+        </section>
+    </main>
+    <footer class="bg-dark text-center text-light lead py-4">
+        <p>&copy; Todos los derechos reservados</p>
+    </footer>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="../js/helpers.js"></script>
+
+</body>
+
+</html>
