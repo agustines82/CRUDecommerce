@@ -1,4 +1,4 @@
-class Producto {
+export class Producto {
     constructor(codigo, marca, modelo, precio, categoria, descripcion, stock, imagen) {
         this.codigo = codigo;
         this.marca = marca;

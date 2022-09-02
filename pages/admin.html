@@ -86,24 +86,28 @@
                         <form id="formProductos">
                             <div class="mb-3">
                                 <label for="codigo" class="form-label">Codigo</label>
-                                <input type="text" class="form-control" id="codigo" placeholder="123" required disabled>
+                                <input type="text" class="form-control" id="codigo" placeholder="123" minlength="3"
+                                    required disabled>
                             </div>
                             <div class="mb-3">
                                 <label for="marca" class="form-label">Marca</label>
-                                <input type="text" class="form-control" id="marca" placeholder="DJI" required>
+                                <input type="text" class="form-control" id="marca" placeholder="DJI" minlength="3"
+                                    maxlength="30" required>
                             </div>
                             <div class="mb-3">
                                 <label for="modelo" class="form-label">Modelo</label>
-                                <input type="text" class="form-control" id="modelo" placeholder="STP300" required>
+                                <input type="text" class="form-control" id="modelo" placeholder="STP300" minlength="3"
+                                    maxlength="30" required>
                             </div>
                             <div class="mb-3">
                                 <label for="precio" class="form-label">Precio</label>
-                                <input type="number" class="form-control" id="precio" placeholder="5000" required>
+                                <input type="number" class="form-control" id="precio" placeholder="5000" min="1"
+                                    required>
                             </div>
                             <div class="mb-3">
                                 <label for="categoria" class="form-label">Categoria</label>
                                 <input type="text" class="form-control" id="categoria"
-                                    placeholder="con camara / sin camara" required>
+                                    placeholder="con camara / sin camara" minlength="3" maxlength="30" required>
                             </div>
                             <div class="mb-3">
                                 <label for="descripcion" class="form-label">Descripcion</label>
@@ -113,7 +117,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="stock" class="form-label">Stock</label>
-                                <input type="number" class="form-control" id="stock" placeholder="3500" required>
+                                <input type="number" class="form-control" id="stock" placeholder="3500" min="1"
+                                    required>
                             </div>
                             <div class="mb-3">
                                 <label for="imagen" class="form-label">Imagen</label>
