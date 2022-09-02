@@ -90,7 +90,7 @@ export function validarCategoria(input) {
     }
 }
 export function validarDescripcion(input) {
-    if (input.value.length >= 1000) {
+    if (input.value.length >= 20 && input.value.length <= 300) {
         input.className = "form-control is-valid";
         return true;
     } else {
