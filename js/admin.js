@@ -25,6 +25,36 @@ let imagen = document.getElementById("imagen");
 //eventos:
 formulario.addEventListener("submit", guardarProducto);
 
+//mostrar los datos que esten cargados en una tabla
+cargaInicial();
+function cargaInicial() {
+    //si el arreglo esta vacio no dibujo nada, sino hay que dibujar la tabla:
+    if (listaProductos.length > 0) {
+        //dibujar una fila por cada objeto que este en el arreglo:
+        listaProductos.forEach((itemProducto) => {
+            crearFila(itemProducto);
+        });
+    }
+}
+function crearFila(producto) {
+    let tablaProductos = document.querySelector("#tablaProductos");
+    tablaProductos.innerHTML += `
+    <tr>
+                        <td>${producto.codigo} </td>
+                        <td class="text-center">${producto.marca}</td>
+                        <td class="text-center">${producto.modelo}</td>
+                        <td class="text-center">${producto.precio}</td>
+                        <td class="text-center">${producto.categoria}</td>
+                        <td width=20%>${producto.descripcion}</td>
+                        <td class="text-center">${producto.stock}</td>
+                        <td width=20%>${producto.imagen}</td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-warning"><i class="bi bi-arrow-repeat"></i></button>
+                            <button type="button" class="btn btn-danger mt-1"><i class="bi bi-x"></i></button>
+                        </td>
+                    </tr>`;
+}
+
 //validaciones del form de la ventana modal de la pagina de administracion.
 codigo.addEventListener("blur", () => {
     validarCodigo(codigo);
