@@ -122,6 +122,8 @@ function guardarProducto(e) {
         guardarProductosEnLocalStorage();
         //limpiar el formulario
         limpiarForm();
+        //dibujamos la fila del producto en la tabla
+        crearFila(nuevoProducto);
     } else {
         alert("Datos incorrectos");
     }
