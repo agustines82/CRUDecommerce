@@ -10,7 +10,7 @@ import {
     validarImagen,
 } from "./helpers.js";
 
-let listaProductos = [];
+let listaProductos = JSON.parse(localStorage.getItem("listaProductosKey")) || [];
 
 let formulario = document.getElementById("formProductos");
 let codigo = document.getElementById("codigo");
@@ -88,6 +88,8 @@ function guardarProducto(e) {
         );
         //guardamos el producto en el arreglo
         listaProductos.push(nuevoProducto);
+        //guardamos en el web storage
+        guardarProductosEnLocalStorage();
         //limpiar el formulario
         limpiarForm();
     } else {
@@ -107,4 +109,8 @@ function limpiarForm() {
     imagen.className = "form-control";
     //generamos un nuevo codigo
     codigo.value = uuidv4();
+}
+//guardar en el Local Storage:
+function guardarProductosEnLocalStorage() {
+    localStorage.setItem("listaProductosKey", JSON.stringify(listaProductos));
 }
