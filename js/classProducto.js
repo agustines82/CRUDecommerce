@@ -8,7 +8,6 @@ export class Producto {
         this.descripcion = descripcion;
         this.stock = stock;
         this.imagen = imagen;
-        this.listadoProductos = [];
     }
     // propiedades conmutadas: (getters y setters)
     set setCodigo(nuevoCodigo) {
@@ -35,9 +34,6 @@ export class Producto {
     set setImagen(nuevaImagen) {
         this.imagen = nuevaImagen;
     }
-    set setListadoProductos(nuevoListado) {
-        this.listadoProductos = nuevoListado;
-    }
 
     get getCodigo() {
         return this.codigo;
@@ -63,9 +59,7 @@ export class Producto {
     get getImagen() {
         return this.imagen;
     }
-    get getListadoProductos() {
-        return this.listadoProductos;
-    }
+
     //metodos:
     mostrarDatos() {
         document.write(`<ul>
@@ -78,8 +72,5 @@ export class Producto {
     <li>Stock:${this.stock}</li>
     <li>Imagen:${this.imagen}</li>
     </ul>`);
-    }
-    agregarProducto(producto) {
-        this.listadoProductos.push(producto);
     }
 }
