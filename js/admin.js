@@ -46,3 +46,12 @@ stock.addEventListener("blur", () => {
 imagen.addEventListener("blur", () => {
     validarImagen(imagen);
 });
+
+//codigo para instanciar la ventana modal del formulario de carga de productos de la pagina administrador.
+const modalProducto = new bootstrap.Modal(document.getElementById("formularioProducto"));
+const btnModalProducto = document.getElementById("btnModalProducto");
+btnModalProducto.addEventListener("click", mostrarFormulario);
+function mostrarFormulario() {
+    modalProducto.show();
+    
+}
