@@ -88,7 +88,23 @@ function guardarProducto(e) {
         );
         //guardamos el producto en el arreglo
         listaProductos.push(nuevoProducto);
+        //limpiar el formulario
+        limpiarForm();
     } else {
         alert("Datos incorrectos");
     }
+}
+function limpiarForm() {
+    formulario.reset(); //resetea el value de todo
+    //reseteamos las clases:
+    codigo.className = "form-control";
+    marca.className = "form-control";
+    modelo.className = "form-control";
+    precio.className = "form-control";
+    categoria.className = "form-control";
+    descripcion.className = "form-control";
+    stock.className = "form-control";
+    imagen.className = "form-control";
+    //generamos un nuevo codigo
+    codigo.value = uuidv4();
 }

@@ -44,7 +44,7 @@ export function validarContrasenia(input) {
 
 //validaciones para el form de la ventana modal de la pagina de administrador
 export function validarCodigo(input) {
-    if (input.value.length === 3) {
+    if (input.value.length >= 3) {
         input.className = "form-control is-valid";
         return true;
     } else {
