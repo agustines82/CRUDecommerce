@@ -10,6 +10,8 @@ import {
     validarImagen,
 } from "./helpers.js";
 
+let listaProductos = [];
+
 let formulario = document.getElementById("formProductos");
 let codigo = document.getElementById("codigo");
 let marca = document.getElementById("marca");
@@ -19,7 +21,9 @@ let categoria = document.getElementById("categoria");
 let descripcion = document.getElementById("descripcion");
 let stock = document.getElementById("stock");
 let imagen = document.getElementById("imagen");
-const btnAdminProducto = document.getElementById("btnProducto");
+
+//eventos:
+formulario.addEventListener("submit", guardarProducto);
 
 //validaciones del form de la ventana modal de la pagina de administracion.
 codigo.addEventListener("blur", () => {
@@ -55,4 +59,36 @@ function mostrarFormulario() {
     modalProducto.show();
     //cargamos el identificador unico en el imput del cogigo:
     codigo.value = uuidv4(); //metodo que genera indentificadores unicos
+}
+
+//creamos objeto producto
+function guardarProducto(e) {
+    e.preventDefault();
+    //volvemos a validar
+    if (
+        validarCodigo(codigo) &&
+        validarMarca(marca) &&
+        validarModelo(modelo) &&
+        validarPrecio(precio) &&
+        validarCategoria(categoria) &&
+        validarDescripcion(descripcion) &&
+        validarStock(stock) &&
+        validarImagen(imagen)
+    ) {
+        //creamos objeto producto
+        let nuevoProducto = new Producto(
+            codigo.value,
+            marca.value,
+            modelo.value,
+            precio.value,
+            categoria.value,
+            descripcion.value,
+            stock.value,
+            imagen.value
+        );
+        //guardamos el producto en el arreglo
+        listaProductos.push(nuevoProducto);
+    } else {
+        alert("Datos incorrectos");
+    }
 }
