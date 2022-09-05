@@ -53,5 +53,6 @@ const btnModalProducto = document.getElementById("btnModalProducto");
 btnModalProducto.addEventListener("click", mostrarFormulario);
 function mostrarFormulario() {
     modalProducto.show();
-    
+    //cargamos el identificador unico en el imput del cogigo:
+    codigo.value = uuidv4(); //metodo que genera indentificadores unicos
 }
