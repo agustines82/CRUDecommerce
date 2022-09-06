@@ -49,7 +49,7 @@ function crearFila(producto) {
                         <td class="text-center">${producto.stock}</td>
                         <td width=20%>${producto.imagen}</td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-warning"><i class="bi bi-arrow-repeat"></i></button>
+                            <button type="button" class="btn btn-warning"><i class="bi bi-arrow-repeat" onclick="editarProducto('${producto.codigo}')"></i></button>
                             <button type="button" class="btn btn-danger mt-1" onclick="borrarProducto('${producto.codigo}')"><i class="bi bi-x"></i></button>
                         </td>
                     </tr>`;
@@ -181,3 +181,21 @@ function borrarTabla() {
     let tablaProductos = document.querySelector("#tablaProductos");
     tablaProductos.innerHTML = "";
 }
+
+//funcion para editar el producto
+window.editarProducto = function (codigoBuscado) {
+    //buscar del arreglo de productos el producto selecionado
+    let productoBuscado = listaProductos.find((producto) => producto.codigo === codigoBuscado);
+    //cargar los datos del producto en el formulario
+    codigo.value = productoBuscado.codigo;
+    marca.value = productoBuscado.marca;
+    modelo.value = productoBuscado.modelo;
+    precio.value = productoBuscado.precio;
+    categoria.value = productoBuscado.categoria;
+    descripcion.value = productoBuscado.descripcion;
+    stock.value = productoBuscado.stock;
+    imagen.value = productoBuscado.imagen;
+
+    // abrir ventana modal
+    modalProducto.show();
+};
