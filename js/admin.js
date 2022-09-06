@@ -22,6 +22,9 @@ let descripcion = document.getElementById("descripcion");
 let stock = document.getElementById("stock");
 let imagen = document.getElementById("imagen");
 
+//variable para controlar si creo o actualizo el producto
+let productoNuevo = true; //si es true crea el producto , si es false actualiza un producto.
+
 //eventos:
 formulario.addEventListener("submit", guardarProducto);
 
@@ -86,6 +89,7 @@ const modalProducto = new bootstrap.Modal(document.getElementById("formularioPro
 const btnModalProducto = document.getElementById("btnModalProducto");
 btnModalProducto.addEventListener("click", mostrarFormulario);
 function mostrarFormulario() {
+    productoNuevo = true;
     modalProducto.show();
     //cargamos el identificador unico en el imput del cogigo:
     codigo.value = uuidv4(); //metodo que genera indentificadores unicos
@@ -105,29 +109,38 @@ function guardarProducto(e) {
         validarStock(stock) &&
         validarImagen(imagen)
     ) {
-        //creamos objeto producto
-        let nuevoProducto = new Producto(
-            codigo.value,
-            marca.value,
-            modelo.value,
-            precio.value,
-            categoria.value,
-            descripcion.value,
-            stock.value,
-            imagen.value
-        );
-        //guardamos el producto en el arreglo
-        listaProductos.push(nuevoProducto);
-        //guardamos en el web storage
-        guardarProductosEnLocalStorage();
-        //limpiar el formulario
-        limpiarForm();
-        //dibujamos la fila del producto en la tabla
-        crearFila(nuevoProducto);
+        if (productoNuevo) {
+            crearProductoNuevo();
+        } else {
+            actualizarProducto();
+        }
     } else {
         alert("Datos incorrectos");
     }
 }
+
+function crearProductoNuevo() {
+    //creamos objeto producto
+    let nuevoProducto = new Producto(
+        codigo.value,
+        marca.value,
+        modelo.value,
+        precio.value,
+        categoria.value,
+        descripcion.value,
+        stock.value,
+        imagen.value
+    );
+    //guardamos el producto en el arreglo
+    listaProductos.push(nuevoProducto);
+    //guardamos en el web storage
+    guardarProductosEnLocalStorage();
+    //limpiar el formulario
+    limpiarForm();
+    //dibujamos la fila del producto en la tabla
+    crearFila(nuevoProducto);
+}
+
 function limpiarForm() {
     formulario.reset(); //resetea el value de todo
     //reseteamos las clases:
@@ -184,6 +197,7 @@ function borrarTabla() {
 
 //funcion para editar el producto
 window.editarProducto = function (codigoBuscado) {
+    productoNuevo = false;
     //buscar del arreglo de productos el producto selecionado
     let productoBuscado = listaProductos.find((producto) => producto.codigo === codigoBuscado);
     //cargar los datos del producto en el formulario
@@ -199,3 +213,27 @@ window.editarProducto = function (codigoBuscado) {
     // abrir ventana modal
     modalProducto.show();
 };
+
+function actualizarProducto() {
+    //buscar la posicion del producto que estoy editando dentro del arreglo
+    let posicionProductoBuscado = listaProductos.findIndex((producto) => producto.codigo === codigo.value);
+
+    //actualizar los datos del producto que estoy editando
+    listaProductos[posicionProductoBuscado].marca = marca.value;
+    listaProductos[posicionProductoBuscado].modelo = modelo.value;
+    listaProductos[posicionProductoBuscado].precio = precio.value;
+    listaProductos[posicionProductoBuscado].categoria = categoria.value;
+    listaProductos[posicionProductoBuscado].descripcion = descripcion.value;
+    listaProductos[posicionProductoBuscado].stock = stock.value;
+    listaProductos[posicionProductoBuscado].imagen = imagen.value;
+
+    //actualizar el local storage
+    guardarProductosEnLocalStorage();
+
+    //actualizar la tabla
+    borrarTabla();
+    cargaInicial();
+
+    //cerrar la ventana modal
+    modalProducto.hide();
+}
