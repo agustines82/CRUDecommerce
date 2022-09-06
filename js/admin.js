@@ -71,7 +71,7 @@ modelo.addEventListener("blur", () => {
 precio.addEventListener("blur", () => {
     validarPrecio(precio);
 });
-categoria.addEventListener("blur", () => {
+categoria.addEventListener("change", () => {
     validarCategoria(categoria);
 });
 descripcion.addEventListener("blur", () => {

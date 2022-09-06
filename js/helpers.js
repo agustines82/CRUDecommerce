@@ -80,15 +80,16 @@ export function validarPrecio(input) {
         return false;
     }
 }
-export function validarCategoria(input) {
-    if (input.value.length >= 3 && input.value.length <= 30) {
-        input.className = "form-control is-valid";
+export function validarCategoria(opcion) {
+    if (opcion.value.length > 0) {
+        opcion.className = "form-control is-valid";
         return true;
     } else {
-        input.className = "form-control is-invalid";
+        opcion.className = "form-control is-invalid";
         return false;
     }
 }
+
 export function validarDescripcion(input) {
     if (input.value.length >= 20 && input.value.length <= 300) {
         input.className = "form-control is-valid";
