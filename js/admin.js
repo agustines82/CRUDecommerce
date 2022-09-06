@@ -149,17 +149,32 @@ function guardarProductosEnLocalStorage() {
 
 //funcion para borrar el producto
 window.borrarProducto = function (codigo) {
-    //buscamos el codigo en el arreglo de listado de productos y lo borramos
-    let listaProductos2 = listaProductos.filter((producto) => {
-        return producto.codigo != codigo;
+    //ventana de sweet alert preguntando si estamos seguros de borrar
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Esta accion no se podrá revertir!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Borrar",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            //buscamos el codigo en el arreglo de listado de productos y lo borramos
+            let listaProductos2 = listaProductos.filter((producto) => {
+                return producto.codigo != codigo;
+            });
+            listaProductos = listaProductos2;
+            //actualizamos el local storage
+            guardarProductosEnLocalStorage();
+            //actualizamos la tabla
+            borrarTabla();
+            //generamos de nuevo la tabla
+            cargaInicial();
+            Swal.fire("Eliminado!", "El producto fue eliminado.", "success");
+        }
     });
-    listaProductos = listaProductos2;
-    //actualizamos el local storage
-    guardarProductosEnLocalStorage();
-    //actualizamos la tabla
-    borrarTabla();
-    //generamos de nuevo la tabla
-    cargaInicial();
 };
 
 function borrarTabla() {
