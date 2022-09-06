@@ -90,6 +90,7 @@ const btnModalProducto = document.getElementById("btnModalProducto");
 btnModalProducto.addEventListener("click", mostrarFormulario);
 function mostrarFormulario() {
     productoNuevo = true;
+    limpiarForm();
     modalProducto.show();
     //cargamos el identificador unico en el imput del cogigo:
     codigo.value = uuidv4(); //metodo que genera indentificadores unicos
@@ -198,6 +199,7 @@ function borrarTabla() {
 //funcion para editar el producto
 window.editarProducto = function (codigoBuscado) {
     productoNuevo = false;
+    limpiarForm();
     //buscar del arreglo de productos el producto selecionado
     let productoBuscado = listaProductos.find((producto) => producto.codigo === codigoBuscado);
     //cargar los datos del producto en el formulario
@@ -236,4 +238,7 @@ function actualizarProducto() {
 
     //cerrar la ventana modal
     modalProducto.hide();
+    limpiarForm();
+    //indicarle lo que sucedio al usuario
+    Swal.fire("Editado!", "El producto fue correctamente modificado!.", "success");
 }
