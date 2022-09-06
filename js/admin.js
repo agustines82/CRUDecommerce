@@ -50,7 +50,7 @@ function crearFila(producto) {
                         <td width=20%>${producto.imagen}</td>
                         <td class="text-center">
                             <button type="button" class="btn btn-warning"><i class="bi bi-arrow-repeat"></i></button>
-                            <button type="button" class="btn btn-danger mt-1"><i class="bi bi-x"></i></button>
+                            <button type="button" class="btn btn-danger mt-1" onclick="borrarProducto('${producto.codigo}')"><i class="bi bi-x"></i></button>
                         </td>
                     </tr>`;
 }
@@ -145,4 +145,24 @@ function limpiarForm() {
 //guardar en el Local Storage:
 function guardarProductosEnLocalStorage() {
     localStorage.setItem("listaProductosKey", JSON.stringify(listaProductos));
+}
+
+//funcion para borrar el producto
+window.borrarProducto = function (codigo) {
+    //buscamos el codigo en el arreglo de listado de productos y lo borramos
+    let listaProductos2 = listaProductos.filter((producto) => {
+        return producto.codigo != codigo;
+    });
+    listaProductos = listaProductos2;
+    //actualizamos el local storage
+    guardarProductosEnLocalStorage();
+    //actualizamos la tabla
+    borrarTabla();
+    //generamos de nuevo la tabla
+    cargaInicial();
+};
+
+function borrarTabla() {
+    let tablaProductos = document.querySelector("#tablaProductos");
+    tablaProductos.innerHTML = "";
 }
