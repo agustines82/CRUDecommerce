@@ -207,7 +207,7 @@ window.borrarProducto = function (codigo) {
             //actualizamos el local storage
             guardarProductosEnLocalStorage();
             //actualizamos la tabla
-            borrarTabla();
+            borrarTablaProductos();
             //generamos de nuevo la tabla
             cargaInicialProductos();
             Swal.fire("Eliminado!", "El producto fue eliminado.", "success");
@@ -215,9 +215,47 @@ window.borrarProducto = function (codigo) {
     });
 };
 
-function borrarTabla() {
+function borrarTablaProductos() {
     let tablaProductos = document.querySelector("#tablaProductos");
     tablaProductos.innerHTML = "";
+}
+
+//funcion para borrar el Invitado
+window.borrarInvitado = function (nombre) {
+    //ventana de sweet alert preguntando si estamos seguros de borrar
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Esta accion no se podrá revertir!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Borrar",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            //buscamos el codigo en el arreglo de listado de productos y lo borramos
+            let listadoInvitados2 = listadoInvitados.filter((invitado) => {
+                return invitado.nombre != nombre;
+            });
+            listadoInvitados = listadoInvitados2;
+            //actualizamos el local storage
+            guardarInvitadoEnLocalStorage();
+            //actualizamos la tabla
+            borrarTablaInvitados();
+            //generamos de nuevo la tabla
+            cargaInicialInvitados();
+            Swal.fire("Eliminado!", "El usuario fue eliminado.", "success");
+        }
+    });
+};
+
+function borrarTablaInvitados() {
+    let tablaInvitados = document.querySelector("#tablaInvitados");
+    tablaInvitados.innerHTML = "";
+}
+function guardarInvitadoEnLocalStorage() {
+    localStorage.setItem("listadoInvitadosKey", JSON.stringify(listadoInvitados));
 }
 
 //funcion para editar el producto
@@ -257,7 +295,7 @@ function actualizarProducto() {
     guardarProductosEnLocalStorage();
 
     //actualizar la tabla
-    borrarTabla();
+    borrarTablaProductos();
     cargaInicialProductos();
 
     //cerrar la ventana modal
