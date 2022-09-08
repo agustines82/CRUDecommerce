@@ -1,4 +1,4 @@
-import { listadoInvitados } from "./registro.js";
+let listadoInvitados = JSON.parse(localStorage.getItem("listadoInvitadosKey")) || [];
 //validaciones para el form de la pagina de Registro:
 export function validarNombre(input) {
     if (input.value.trim().length >= 3 && input.value.trim().length <= 35) {
@@ -49,6 +49,17 @@ export function validarEmail(input) {
 export function validarContrasenia(input) {
     //validar que tenga como minimo 8 caracteres alfanumericos con exp reg
     let expReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8}$/;
+    if (expReg.test(input.value)) {
+        input.className = "form-control is-valid";
+        return true;
+    } else {
+        input.className = "form-control is-invalid";
+        return false;
+    }
+}
+//validacion para login
+export function validarEmailModal(input) {
+    let expReg = /[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/gim;
     if (expReg.test(input.value)) {
         input.className = "form-control is-valid";
         return true;
