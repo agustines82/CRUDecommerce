@@ -9,7 +9,7 @@
     <meta name="description"
         content="Comprá online y pagalo en hasta 12 cuotas con envios a todo el pais. 40% off en tecnologia. Tienda oficial DronesLandia en Argentina. Tenemos los Mejores Drones Importados Phantom, Mavic y mucho más ¡Consultanos Ahora!.">
     <meta name="Keyworks" content="e-commerce, compras, drones , dron ">
-    <!-- CSS only -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -36,6 +36,12 @@
                         </li>
                         <li class="nav-item fs-3">
                             <a class="nav-link text-light" href="pages/admin.html">Administrador</a>
+                        </li>
+                        <li class="nav-item fs-5 my-2 mx-3">
+                            <button type="button" class="btn btn-dark text-light" data-bs-toggle="modal"
+                                data-bs-target="#iniciarSesion">
+                                Iniciar sesion
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -185,6 +191,34 @@
 
         </section>
     </main>
+    <!-- Modal -->
+    <div class="modal fade" id="iniciarSesion" tabindex="-1" aria-labelledby="iniciarSesionLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-black d-flex justify-content-center">
+                    <img src="" alt="imagen del logo de " class=" w-50">
+                </div>
+                <form>
+                    <div class="my-3 mx-5">
+                        <label for="Email" class="col-form-label">Correo electronico</label>
+                        <input type="text" class="form-control" id="Email" placeholder="ejemplo@gmail.com" required>
+                    </div>
+                    <div class="my-3 mx-5">
+                        <label for="Contraseña" class="col-form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="Contraseña" required>
+                    </div>
+                </form>
+                <div class="modal-footer d-flex justify-content-center">
+                    <a class="btn btn-dark text-light fs-4" href="">Iniciar sesion</a>
+                </div>
+                <a href="pages/registro.html" class="card-link text-center">Registrate</a>
+
+            </div>
+        </div>
+    </div>
 
     <footer class="bg-dark text-center text-light lead py-4">
         <p>&copy; Todos los derechos reservados</p>
