@@ -47,9 +47,9 @@
             <h1 class="display-1">Administrador de Productos</h1>
             <hr>
             <!-- Button trigger modal - eliminar los data una vez que les des funcionabilidad-->
-            <button id="btnModalProducto" type="button" class="btn btn-lg btn-primary" <i class="bi bi-bag-plus-fill">
-                Agregar
-                Producto</i></button>
+            <button id="btnModalProducto" type="button" class="btn btn-lg btn-primary"><i class="bi bi-bag-plus-fill">
+                    Agregar
+                    Producto</i></button>
         </section>
         <section class="my-5">
             <h3 class="display-3 text-center">Lista de Productos</h3>
@@ -74,6 +74,27 @@
                 </tbody>
             </table>
         </section>
+        <section class="container my-5">
+            <h3 class="display-3 text-center">Lista de Usuarios</h3>
+            <hr />
+        </section>
+        <section class="container table-responsive mt5">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">USUARIO</th>
+                        <th scope="col" class="text-center">DIRECCION</th>
+                        <th scope="col" class="text-center">EMAIL</th>
+                        <th scope="col" class="text-center">CONTRASEÑA</th>
+                        <th scope="col" class="text-center"> </th>
+                    </tr>
+                </thead>
+                <tbody id="tablaInvitados"></tbody>
+            </table>
+        </section>
+
+
+
         <!-- Ventana Modal -->
         <div class="modal fade" id="formularioProducto" tabindex="-1" aria-labelledby="formulario" aria-hidden="true">
             <div class="modal-dialog">

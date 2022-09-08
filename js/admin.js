@@ -48,9 +48,9 @@ function crearFila(producto) {
                         <td class="text-center">${producto.modelo}</td>
                         <td class="text-center">${producto.precio}</td>
                         <td class="text-center">${producto.categoria}</td>
-                        <td width=20%>${producto.descripcion}</td>
+                        <td>${producto.descripcion}</td>
                         <td class="text-center">${producto.stock}</td>
-                        <td width=20%>${producto.imagen}</td>
+                        <td>${producto.imagen}</td>
                         <td class="text-center">
                             <button type="button" class="btn btn-warning"><i class="bi bi-arrow-repeat" onclick="editarProducto('${producto.codigo}')"></i></button>
                             <button type="button" class="btn btn-danger mt-1" onclick="borrarProducto('${producto.codigo}')"><i class="bi bi-x"></i></button>
