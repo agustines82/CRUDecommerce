@@ -1,7 +1,7 @@
 import { Invitado } from "./classesDeUsuarios.js";
 import { validarNombre, validarDireccion, validarEmail, validarContrasenia } from "./helpers2.js";
 
-let listadoInvitados = [];
+export let listadoInvitados = JSON.parse(localStorage.getItem("listadoInvitadosKey")) || [];
 
 let formulario = document.getElementById("formRegistro");
 let nombre = document.getElementById("nombreRegistro");
@@ -51,7 +51,7 @@ function crearInvitado() {
     //guardo el Invitado en el arreglo
     listadoInvitados.push(nuevoInvitado);
     //guardo el invitado en el local storage
-
+    guardarInvitadoEnLocalStorage();
     //reseteo los datos del formulario
     limpiarFormulario();
 }
@@ -64,4 +64,7 @@ function limpiarFormulario() {
     email.className = "form-control";
     contrasenia.className = "form-control";
     contrasenia2.className = "form-control";
+}
+function guardarInvitadoEnLocalStorage() {
+    localStorage.setItem("listadoInvitadosKey", JSON.stringify(listadoInvitados));
 }
