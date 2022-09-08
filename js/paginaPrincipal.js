@@ -16,28 +16,32 @@ contraseniaModal.addEventListener("blur", () => {
 
 let listaProductos =
   JSON.parse(localStorage.getItem("listaProductosKey")) || [];
-
-let exposicionProducto = listaProductos.forEach((producto) => {
-
+cargaInicialExposicion();
+function cargaInicialExposicion() {
+  if (listaProductos.length > 0) {
+    listaProductos.forEach((itemProducto) => {
+      exponerProducto(itemProducto);
+    });
+  }
+}
+function exponerProducto(producto) {
   let exposicion = document.querySelector("#exposicionProductos");
-  return exposicion.innerHTML += ` <aside class="col-10 col-md-4 col-lg-3 m-0 p-0 margen">
-                <div class="card">
-                  <img
-                    src=" ${producto.imagen}"
-                    class="card-img-top"
-                    alt="${producto.modelo}" />
-               
-                  <div class="card-body">
-                    <h5 class="card-title">
-                        ${producto.modelo}
-                    </h5>
-                    <p class="lead">$${producto.precio}</p>
-                    <button type="button" class="btn btn-dark">
-                    <a href="pages/detalleProducto.html" class="card-link text-center">Ver mas</a>
-                    </button>
-                  </div>
-                </div>
-              </aside>`;
-});
-
-
+  exposicion.innerHTML += ` <aside class="col-10 col-md-4 col-lg-3 m-0 p-0 margen">
+    <div class="card">
+      <img
+        src=" ${producto.imagen}"
+        class="card-img-top"
+        alt="${producto.modelo}" />
+   
+      <div class="card-body">
+        <h5 class="card-title">
+            ${producto.modelo}
+        </h5>
+        <p class="lead">$${producto.precio}</p>
+        <button type="button" class="btn btn-dark">
+        <a href="pages/detalleProducto.html" class="card-link text-center">Ver mas</a>
+        </button>
+      </div>
+    </div>
+  </aside>`;
+}
