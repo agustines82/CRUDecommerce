@@ -1,5 +1,7 @@
 import { Invitado } from "./classesDeUsuarios.js";
-import { validarNombre, validarDireccion, validarEmail, validarContrasenia } from "./helpers.js";
+import { validarNombre, validarDireccion, validarEmail, validarContrasenia } from "./helpers2.js";
+
+let listadoInvitados = [];
 
 let formulario = document.getElementById("formRegistro");
 let nombre = document.getElementById("nombreRegistro");
@@ -9,7 +11,8 @@ let contrasenia = document.getElementById("Password1Registro");
 let contrasenia2 = document.getElementById("Password2Registro");
 let btnRegistro = document.getElementById("btnRegistro");
 
-formulario.addEventListener("submit", crearUsuario);
+//eventos:
+formulario.addEventListener("submit", guardarInvitado);
 
 //valicadiones
 nombre.addEventListener("blur", () => {
@@ -28,7 +31,7 @@ contrasenia2.addEventListener("blur", () => {
     validarContrasenia(contrasenia2);
 });
 
-function crearUsuario(e) {
+function guardarInvitado(e) {
     e.preventDefault();
     if (
         validarNombre(nombre) &&
@@ -37,13 +40,20 @@ function crearUsuario(e) {
         validarContrasenia(contrasenia) &&
         validarContrasenia(contrasenia2)
     ) {
-        //creamos el objeto Usuario Invitado
-        const nuevoUsuario = new Invitado(nombre.value, direccion.value, email.value, contrasenia.value, contrasenia2.value);
-        //reseteo los datos del formulario
-        limpiarFormulario();
+        crearInvitado();
     } else {
         alert("Datos incorrectos");
     }
+}
+function crearInvitado() {
+    //creamos el objeto con la clase invitado (los usuarios administradores se cargaran en otro arreglo en el codigo)
+    const nuevoInvitado = new Invitado(nombre.value, direccion.value, email.value, contrasenia.value, contrasenia2.value);
+    //guardo el Invitado en el arreglo
+    listadoInvitados.push(nuevoInvitado);
+    //guardo el invitado en el local storage
+
+    //reseteo los datos del formulario
+    limpiarFormulario();
 }
 
 function limpiarFormulario() {
