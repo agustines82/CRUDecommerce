@@ -17,7 +17,6 @@ contraseniaModal.addEventListener("blur", () => {
 let listaProductos =
   JSON.parse(localStorage.getItem("listaProductosKey")) || [];
 
-
 let exposicionProducto = listaProductos.forEach((producto) => {
 
   let exposicion = document.querySelector("#exposicionProductos");
