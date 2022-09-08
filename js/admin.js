@@ -10,6 +10,7 @@ import {
     validarImagen,
 } from "./helpers.js";
 
+let listadoInvitados = JSON.parse(localStorage.getItem("listadoInvitadosKey")) || [];
 let listaProductos = JSON.parse(localStorage.getItem("listaProductosKey")) || [];
 
 let formulario = document.getElementById("formProductos");
@@ -29,17 +30,27 @@ let productoNuevo = true; //si es true crea el producto , si es false actualiza 
 formulario.addEventListener("submit", guardarProducto);
 
 //mostrar los datos que esten cargados en una tabla
-cargaInicial();
-function cargaInicial() {
+cargaInicialProductos();
+cargaInicialInvitados();
+function cargaInicialProductos() {
     //si el arreglo esta vacio no dibujo nada, sino hay que dibujar la tabla:
     if (listaProductos.length > 0) {
         //dibujar una fila por cada objeto que este en el arreglo:
         listaProductos.forEach((itemProducto) => {
-            crearFila(itemProducto);
+            crearFilaProducto(itemProducto);
         });
     }
 }
-function crearFila(producto) {
+function cargaInicialInvitados() {
+    //si el arreglo esta vacio no dibujo nada, sino hay que dibujar la tabla:
+    if (listadoInvitados.length > 0) {
+        //dibujar una fila por cada objeto que este en el arreglo:
+        listadoInvitados.forEach((invitada) => {
+            crearFilaInvitado(invitada);
+        });
+    }
+}
+function crearFilaProducto(producto) {
     let tablaProductos = document.querySelector("#tablaProductos");
     tablaProductos.innerHTML += `
     <tr>
@@ -54,6 +65,19 @@ function crearFila(producto) {
                         <td class="text-center">
                             <button type="button" class="btn btn-warning"><i class="bi bi-arrow-repeat" onclick="editarProducto('${producto.codigo}')"></i></button>
                             <button type="button" class="btn btn-danger mt-1" onclick="borrarProducto('${producto.codigo}')"><i class="bi bi-x"></i></button>
+                        </td>
+                    </tr>`;
+}
+function crearFilaInvitado(invitado) {
+    let tablaInvitados = document.querySelector("#tablaInvitados");
+    tablaInvitados.innerHTML += `
+    <tr>
+                        <td>${invitado.nombre} </td>
+                        <td class="text-center">${invitado.direccion}</td>
+                        <td class="text-center">${invitado.email}</td>
+                        <td class="text-center">${invitado.contrasenia}</td>   
+                        <td class="text-center">
+                            <button type="button" class="btn btn-danger mt-1" onclick="borrarInvitado('${invitado.nombre}')"><i class="bi bi-x"></i></button>
                         </td>
                     </tr>`;
 }
@@ -139,7 +163,7 @@ function crearProductoNuevo() {
     //limpiar el formulario
     limpiarForm();
     //dibujamos la fila del producto en la tabla
-    crearFila(nuevoProducto);
+    crearFilaProducto(nuevoProducto);
 }
 
 function limpiarForm() {
@@ -183,17 +207,55 @@ window.borrarProducto = function (codigo) {
             //actualizamos el local storage
             guardarProductosEnLocalStorage();
             //actualizamos la tabla
-            borrarTabla();
+            borrarTablaProductos();
             //generamos de nuevo la tabla
-            cargaInicial();
+            cargaInicialProductos();
             Swal.fire("Eliminado!", "El producto fue eliminado.", "success");
         }
     });
 };
 
-function borrarTabla() {
+function borrarTablaProductos() {
     let tablaProductos = document.querySelector("#tablaProductos");
     tablaProductos.innerHTML = "";
+}
+
+//funcion para borrar el Invitado
+window.borrarInvitado = function (nombre) {
+    //ventana de sweet alert preguntando si estamos seguros de borrar
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Esta accion no se podrá revertir!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Borrar",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            //buscamos el codigo en el arreglo de listado de productos y lo borramos
+            let listadoInvitados2 = listadoInvitados.filter((invitado) => {
+                return invitado.nombre != nombre;
+            });
+            listadoInvitados = listadoInvitados2;
+            //actualizamos el local storage
+            guardarInvitadoEnLocalStorage();
+            //actualizamos la tabla
+            borrarTablaInvitados();
+            //generamos de nuevo la tabla
+            cargaInicialInvitados();
+            Swal.fire("Eliminado!", "El usuario fue eliminado.", "success");
+        }
+    });
+};
+
+function borrarTablaInvitados() {
+    let tablaInvitados = document.querySelector("#tablaInvitados");
+    tablaInvitados.innerHTML = "";
+}
+function guardarInvitadoEnLocalStorage() {
+    localStorage.setItem("listadoInvitadosKey", JSON.stringify(listadoInvitados));
 }
 
 //funcion para editar el producto
@@ -233,8 +295,8 @@ function actualizarProducto() {
     guardarProductosEnLocalStorage();
 
     //actualizar la tabla
-    borrarTabla();
-    cargaInicial();
+    borrarTablaProductos();
+    cargaInicialProductos();
 
     //cerrar la ventana modal
     modalProducto.hide();
