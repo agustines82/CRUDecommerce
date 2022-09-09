@@ -1,32 +1,43 @@
 import { validarEmailModal, validarContrasenia } from "./helpers2.js";
+import { listadoEmailAdmin } from "./usuarioAdmin.js";
 
-//validaciones ventana modal
-
+let emailModalCargado = [];
+let formModalLogin = document.getElementById("formModalLogin");
 let emailModal = document.getElementById("emailModal");
 let contraseniaModal = document.getElementById("contraseniaModal");
 
+//eventos
+formModalLogin.addEventListener("submit", guardarEmail);
+
+//validaciones ventana modal
 emailModal.addEventListener("blur", () => {
-  validarEmailModal(emailModal);
+    validarEmailModal(emailModal);
 });
 contraseniaModal.addEventListener("blur", () => {
-  validarContrasenia(contraseniaModal);
+    validarContrasenia(contraseniaModal);
 });
 
-//logica de pagina principal, para exponer productos
+//codigo para instanciar la ventana modal de inicio de sesion
+const modalLogin = new bootstrap.Modal(document.getElementById("formularioModalLogin"));
+const btnModalLogin = document.getElementById("btnModalLogin");
+btnModalLogin.addEventListener("click", mostrarLogin);
+function mostrarLogin() {
+    modalLogin.show();
+}
 
-let listaProductos =
-  JSON.parse(localStorage.getItem("listaProductosKey")) || [];
+//logica de pagina principal, para exponer productos
+let listaProductos = JSON.parse(localStorage.getItem("listaProductosKey")) || [];
 cargaInicialExposicion();
 function cargaInicialExposicion() {
-  if (listaProductos.length > 0) {
-    listaProductos.forEach((itemProducto) => {
-      exponerProducto(itemProducto);
-    });
-  }
+    if (listaProductos.length > 0) {
+        listaProductos.forEach((itemProducto) => {
+            exponerProducto(itemProducto);
+        });
+    }
 }
 function exponerProducto(producto) {
-  let exposicion = document.querySelector("#exposicionProductos");
-  exposicion.innerHTML += ` <aside class="col-10 col-md-4 col-lg-3 m-0 p-0 margen">
+    let exposicion = document.querySelector("#exposicionProductos");
+    exposicion.innerHTML += ` <aside class="col-10 col-md-4 col-lg-3 m-0 p-0 margen">
     <div class="card">
       <img
         src=" ${producto.imagen}"
@@ -44,4 +55,25 @@ function exponerProducto(producto) {
       </div>
     </div>
   </aside>`;
+}
+
+//logica para mostrar link de administrador en el navbar de la pagina principal
+//guardamos el email en una variable
+function guardarEmail(e) {
+    e.preventDefault();
+    if (validarEmailModal(emailModal) && validarContrasenia(contraseniaModal)) {
+        //guardamos el email en el arreglo
+        emailModalCargado.push(emailModal.value);
+    }
+}
+mostrarLinkAdmin();
+function mostrarLinkAdmin() {
+    //buscamos el email cargado en el listado de email de administradores
+    let emailBuscado = listadoEmailAdmin.includes(emailModalCargado[0]);
+
+    if (emailBuscado) {
+        //agrego la etiqueta <a> a la etiqueta <li> del navbar de la pagina principal
+        let linkAdmin = document.querySelector("#mostrarAdmin");
+        linkAdmin.innerHTML = `<a class="nav-link text-light" href="pages/admin.html">Administrador</a>`;
+    }
 }
