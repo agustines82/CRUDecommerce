@@ -15,6 +15,13 @@ emailModal.addEventListener("blur", () => {
 contraseniaModal.addEventListener("blur", () => {
     validarContrasenia(contraseniaModal);
 });
+//codigo para instanciar la ventana modal de inicio de sesion
+const modalLogin = new bootstrap.Modal(document.getElementById("formularioModalLogin"));
+const btnModalLogin = document.getElementById("btnModalLogin");
+btnModalLogin.addEventListener("click", mostrarLogin);
+function mostrarLogin() {
+    modalLogin.show();
+}
 
 //logica de pagina principal, para exponer productos
 
