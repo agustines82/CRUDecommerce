@@ -1,12 +1,13 @@
 import { validarEmailModal, validarContrasenia } from "./helpers2.js";
 import { listadoEmailAdmin } from "./usuarioAdmin.js";
 
+let emailModalCargado = [];
 let formModalLogin = document.getElementById("formModalLogin");
 let emailModal = document.getElementById("emailModal");
 let contraseniaModal = document.getElementById("contraseniaModal");
 
 //eventos
-formModalLogin.addEventListener("submit", mostrarLinkAdmin);
+formModalLogin.addEventListener("submit", guardarEmail);
 
 //validaciones ventana modal
 emailModal.addEventListener("blur", () => {
@@ -15,6 +16,7 @@ emailModal.addEventListener("blur", () => {
 contraseniaModal.addEventListener("blur", () => {
     validarContrasenia(contraseniaModal);
 });
+
 //codigo para instanciar la ventana modal de inicio de sesion
 const modalLogin = new bootstrap.Modal(document.getElementById("formularioModalLogin"));
 const btnModalLogin = document.getElementById("btnModalLogin");
@@ -24,7 +26,6 @@ function mostrarLogin() {
 }
 
 //logica de pagina principal, para exponer productos
-
 let listaProductos = JSON.parse(localStorage.getItem("listaProductosKey")) || [];
 cargaInicialExposicion();
 function cargaInicialExposicion() {
@@ -57,11 +58,19 @@ function exponerProducto(producto) {
 }
 
 //logica para mostrar link de administrador en el navbar de la pagina principal
-function mostrarLinkAdmin(e) {
+//guardamos el email en una variable
+function guardarEmail(e) {
     e.preventDefault();
-    //si el email escrito en el formulario se encuentra en el arreglo de lista de administradores entonces habilito el link administrador
-    let emailBuscado = listadoEmailAdmin.includes((email) => email === emailModal.value);
-    console.log(emailBuscado);
+    if (validarEmailModal(emailModal) && validarContrasenia(contraseniaModal)) {
+        //guardamos el email en el arreglo
+        emailModalCargado.push(emailModal.value);
+    }
+}
+mostrarLinkAdmin();
+function mostrarLinkAdmin() {
+    //buscamos el email cargado en el listado de email de administradores
+    let emailBuscado = listadoEmailAdmin.includes(emailModalCargado[0]);
+
     if (emailBuscado) {
         //agrego la etiqueta <a> a la etiqueta <li> del navbar de la pagina principal
         let linkAdmin = document.querySelector("#mostrarAdmin");

@@ -58,11 +58,19 @@ export function validarContrasenia(input) {
     }
 }
 //validacion para login
+// si el email se encuentra cargado en la lista de usuarios entonces deja proseguir sino te pide registrarte
 export function validarEmailModal(input) {
     let expReg = /[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/gim;
     if (expReg.test(input.value)) {
-        input.className = "form-control is-valid";
-        return true;
+        let emailRepetido = listadoInvitados.find((invitado) => {
+            return invitado.email === input.value;
+        });
+        if (!listadoInvitados.includes(emailRepetido)) {
+            alert("email no registrado, registrate primero por favor");
+        } else {
+            input.className = "form-control is-valid";
+            return true;
+        }
     } else {
         input.className = "form-control is-invalid";
         return false;
