@@ -10,6 +10,7 @@ let btnLogin = document.getElementById("btnLogin");
 
 btnLogin.addEventListener("click", guardarEmail);
 //validaciones ventana modal
+
 emailModal.addEventListener("blur", () => {
     validarEmailModal(emailModal);
 });
@@ -82,3 +83,9 @@ function mostrarLinkAdmin() {
         linkAdmin.className = "nav-item fs-3";
     }
 }
+
+
+
+
+
+
