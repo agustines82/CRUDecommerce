@@ -2,13 +2,13 @@ import { validarEmailModal, validarContrasenia } from "./helpers2.js";
 import { listadoEmailAdmin } from "./usuarioAdmin.js";
 
 let emailModalCargado = [];
-let formModalLogin = document.getElementById("formModalLogin");
+
 let emailModal = document.getElementById("emailModal");
 let contraseniaModal = document.getElementById("contraseniaModal");
-
+let btnLogin = document.getElementById("btnLogin");
 //eventos
-formModalLogin.addEventListener("submit", guardarEmail);
 
+btnLogin.addEventListener("click", guardarEmail);
 //validaciones ventana modal
 emailModal.addEventListener("blur", () => {
     validarEmailModal(emailModal);
@@ -61,9 +61,14 @@ function exponerProducto(producto) {
 //guardamos el email en una variable
 function guardarEmail(e) {
     e.preventDefault();
+
     if (validarEmailModal(emailModal) && validarContrasenia(contraseniaModal)) {
         //guardamos el email en el arreglo
         emailModalCargado.push(emailModal.value);
+        //cerramos la ventana modal
+        modalLogin.hide();
+        //mostramos el link
+        mostrarLinkAdmin();
     }
 }
 mostrarLinkAdmin();
@@ -72,8 +77,8 @@ function mostrarLinkAdmin() {
     let emailBuscado = listadoEmailAdmin.includes(emailModalCargado[0]);
 
     if (emailBuscado) {
-        //agrego la etiqueta <a> a la etiqueta <li> del navbar de la pagina principal
+        //quito la clase ocultar de la etiqueta li
         let linkAdmin = document.querySelector("#mostrarAdmin");
-        linkAdmin.innerHTML = `<a class="nav-link text-light" href="pages/admin.html">Administrador</a>`;
+        linkAdmin.className = "nav-item fs-3";
     }
 }
