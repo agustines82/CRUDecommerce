@@ -38,7 +38,7 @@ function cargaInicialExposicion() {
 }
 function exponerProducto(producto) {
     let exposicion = document.querySelector("#exposicionProductos");
-    exposicion.innerHTML += ` <aside class="col-10 col-md-4 col-lg-3 m-0 p-0 margen">
+    exposicion.innerHTML += ` <aside class="col-10 col-md-4 col-lg-3 align-items-center justify-content-center">
     <div class="card">
       <img
         src=" ${producto.imagen}"
