@@ -1,3 +1,4 @@
+let carrito = JSON.parse(sessionStorage.getItem("carritoKey")) || [];
 //tomamos el parametro de la URL
 const urlParametro = new URLSearchParams(window.location.search);
 let codigoUrl = urlParametro.get("codigo");
@@ -21,10 +22,27 @@ detalleDron.innerHTML = `
       <p class="card-text"><small class="text-muted">stock: ${dronBuscado.stock} unidades</small></p>
     </div>
     <div class="ms-3 mb-3">
-        <a class="btn btn-primary" href="error.html"><i class="bi bi-cart4"> Agregar al carrito</i></a>
+        <button class="btn btn-dark" onclick="guardarEnCarrito('${dronBuscado.codigo}')"><i class="bi bi-cart2"></i> Sumar al carrito</button>
     </div>
     
   </div>
 </div>
 </div>
 `;
+
+//carrito de compras
+
+//funcion para sumar el producto seleccionado al carrito de compras
+function guardarEnCarrito(codigoBuscado) {
+    //buscamos el dron en el arreglo de productos
+    let dronSeleccionado = listaProductos.find((dron) => dron.codigo === codigoBuscado);
+    //guardamos el dron seleccionado en el arreglo de carrito
+    carrito.push(dronSeleccionado);
+    //guardamos carrito en el web storage
+    guardarCarritoEnLocalStorage();
+}
+
+function guardarCarritoEnLocalStorage() {
+    sessionStorage.setItem("carritoKey", JSON.stringify(carrito));
+}
+console.log(carrito);
