@@ -9,7 +9,7 @@
     <meta name="description"
         content="Comprá online y pagalo en hasta 12 cuotas con envios a todo el pais. 40% off en tecnologia. Tienda oficial DronesLandia en Argentina. Tenemos los Mejores Drones Importados Phantom, Mavic y mucho más ¡Consultanos Ahora!.">
     <meta name="Keyworks" content="e-commerce, compras, drones , dron ">
-    <!-- CSS only -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -34,8 +34,14 @@
                         <li class="nav-item fs-3">
                             <a class="nav-link text-light" href="pages/nosotros.html">Nosotros</a>
                         </li>
-                        <li class="nav-item fs-3">
+                        <li class="nav-item fs-3 ocultar" id="mostrarAdmin">
                             <a class="nav-link text-light" href="pages/admin.html">Administrador</a>
+                        </li>
+                        <li class="nav-item fs-5 my-2 mx-3">
+                            <!-- Button trigger modal -->
+                            <button id="btnModalLogin" type="button" class="btn btn-dark btn-lg text-light">
+                                Iniciar Sesion
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -43,8 +49,108 @@
         </nav>
     </header>
     <main>
+        <section class="container my-4">
+            <div id="carouseldrones" class="carousel slide" data-bs-ride="true">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouseldrones" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouseldrones" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouseldrones" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://images.pexels.com/photos/442587/pexels-photo-442587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            class="d-block w-100 carousel" alt="atardecer con dron" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.pexels.com/photos/739410/pexels-photo-739410.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            class="d-block w-100 carousel" alt="dron celeste" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.pexels.com/photos/1379371/pexels-photo-1379371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            class="d-block w-100 carousel" alt="paisaje" />
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouseldrones"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouseldrones"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+        <div>
+            <h1 class="text-center display-4">Conoce nuestros diferentes diseños</h1>
+        </div>
+        <section class="container my-5">
+            <h2 class="text-center display-2">Buscador de Productos</h2>
+            <input type="text" id="formulario" class="form-control my-2">
+            <button class="btn btn-info mb-2" id="boton">Buscar</button>
+            <ul id="resultado">
+            </ul>
+        </section>
+        <section class="container my-5">
+            <article class="row text-center centrarCards" id="exposicionProductos">
 
+            </article>
+
+        </section>
     </main>
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Ventana Modal -->
+    <div class="modal fade" id="formularioModalLogin" tabindex="-1" aria-labelledby="iniciarSesion" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-black d-flex justify-content-center">
+                    <img src="" alt="imagen del logo de " class=" w-50">
+                </div>
+                <form id="formModalLogin">
+                    <div class="my-3 mx-5">
+                        <label for="emailModal" class="col-form-label">Correo electronico</label>
+                        <input type="text" class="form-control" id="emailModal" placeholder="ejemplo@gmail.com"
+                            required>
+                    </div>
+                    <div class="my-3 mx-5">
+                        <label for="contraseniaModal" class="col-form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="contraseniaModal" required>
+                    </div>
+                </form>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-dark text-light fs-4" id="btnLogin"> <a
+                            href="index.html">Iniciar
+                            sesion</a></button>
+                </div>
+                <a href="pages/registro.html" class="card-link text-center">Registrate</a>
+
+            </div>
+        </div>
+    </div>
+
     <footer class="bg-dark text-center text-light lead py-4">
         <p>&copy; Todos los derechos reservados</p>
     </footer>
@@ -54,7 +160,7 @@
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
     <script src="js/app.js"></script>
-    <script src="js/paginaPrincipal.js"></script>
+    <script src="js/paginaPrincipal.js" type="module"></script>
 </body>
 
 </html>
