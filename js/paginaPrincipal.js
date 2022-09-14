@@ -38,7 +38,7 @@ function cargaInicialExposicion() {
 }
 function exponerProducto(producto) {
     let exposicion = document.querySelector("#exposicionProductos");
-    exposicion.innerHTML += ` <aside class="col-10 col-md-4 col-lg-3 m-0 p-0 margen">
+    exposicion.innerHTML += ` <aside class="col-10 col-md-4 col-lg-3 align-items-center justify-content-center">
     <div class="card">
       <img
         src=" ${producto.imagen}"
@@ -50,8 +50,8 @@ function exponerProducto(producto) {
             ${producto.modelo}
         </h5>
         <p class="lead">$${producto.precio}</p>
-        <button type="button" class="btn btn-dark">
-        <a href="pages/detalleProducto.html" class="card-link text-center">Ver mas</a>
+        <button class="btn btn-dark" onclick="verPaginaDetalle('${producto.codigo}')">
+        Ver mas
         </button>
       </div>
     </div>
@@ -84,8 +84,8 @@ function mostrarLinkAdmin() {
     }
 }
 
-
-
-
-
-
+//funcion para ver el producto expuesto en la pagina de detalle
+window.verPaginaDetalle = function (codigo) {
+    //contruimos la ruta para ir a la web de detallesProductos html con un parametro
+    window.location.href = window.location.origin + "/pages/detalleProductos.html?codigo=" + codigo;
+};

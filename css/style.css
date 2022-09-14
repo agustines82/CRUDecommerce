@@ -5,3 +5,22 @@
 .ocultar {
     display: none;
 }
+
+.banner{
+    height: 450px;
+  
+}
+
+/* Media queries */
+/*SM*/
+@media all and (max-width:767px){ 
+    .banner{
+        height: auto;
+    }
+    } 
+/*MD*/
+@media all and (min-width:768px) and (max-width:991px){ 
+    .banner{
+        height: 350px;
+    }
+}

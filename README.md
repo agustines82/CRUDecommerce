@@ -15,7 +15,6 @@ En este proyecto implementamos local storage para crear un CRUD de productos par
 -   Agustin Sampayo
 -   Lucia Gonzalez Vidalon
 -   Tomas Luna
--   Cristian Uncos
 -   Yessica Juarez
 
 ## Librerias externas
