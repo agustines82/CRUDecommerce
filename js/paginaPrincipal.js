@@ -1,4 +1,4 @@
-import { validarEmailModal, validarContrasenia } from "./helpers2.js";
+import { validarEmailModal, validarContraseniaModal } from "./helpers2.js";
 import { listadoEmailAdmin } from "./usuarioAdmin.js";
 
 let emailModalCargado = [];
@@ -15,7 +15,7 @@ emailModal.addEventListener("blur", () => {
     validarEmailModal(emailModal);
 });
 contraseniaModal.addEventListener("blur", () => {
-    validarContrasenia(contraseniaModal);
+    validarContraseniaModal(contraseniaModal);
 });
 
 //codigo para instanciar la ventana modal de inicio de sesion
@@ -63,7 +63,7 @@ function exponerProducto(producto) {
 function guardarEmail(e) {
     e.preventDefault();
 
-    if (validarEmailModal(emailModal) && validarContrasenia(contraseniaModal)) {
+    if (validarEmailModal(emailModal) && validarContraseniaModal(contraseniaModal)) {
         //guardamos el email en el arreglo
         emailModalCargado.push(emailModal.value);
         //cerramos la ventana modal
