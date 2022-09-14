@@ -68,11 +68,25 @@ export function validarEmailModal(input) {
         if (!listadoInvitados.includes(emailRepetido)) {
             alert("email no registrado, registrate primero por favor");
         } else {
-            input.className = "form-control is-valid";
             return true;
         }
     } else {
-        input.className = "form-control is-invalid";
+        return false;
+    }
+}
+
+export function validarContraseniaModal(input) {
+    //validar que tenga como minimo 8 caracteres alfanumericos con exp reg
+    let expReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8}$/;
+    if (expReg.test(input.value)) {
+        let contraseniaCorrecta = listadoInvitados.find((invitado) => {
+            return invitado.contrasenia === input.value;
+        });
+        if (listadoInvitados.includes(contraseniaCorrecta)) {
+            return true;
+        }
+    } else {
+        alert("Tu email o contraseñia es incorrecto");
         return false;
     }
 }
