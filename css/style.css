@@ -6,21 +6,20 @@
     display: none;
 }
 
-.banner{
+.banner {
     height: 450px;
-  
 }
 
 /* Media queries */
 /*SM*/
-@media all and (max-width:767px){ 
-    .banner{
+@media all and (max-width: 767px) {
+    .banner {
         height: 150px;
     }
-    } 
+}
 /*MD*/
-@media all and (min-width:768px) and (max-width:991px){ 
-    .banner{
+@media all and (min-width: 768px) and (max-width: 991px) {
+    .banner {
         height: 350px;
     }
 }
