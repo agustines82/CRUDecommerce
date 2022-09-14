@@ -89,3 +89,21 @@ window.verPaginaDetalle = function (codigo) {
     //contruimos la ruta para ir a la web de detallesProductos html con un parametro
     window.location.href = window.location.origin + "/pages/detalleProductos.html?codigo=" + codigo;
 };
+
+//Buscador Interno
+
+btn.onclick = function(){
+    let buscar = document.getElementById("buscar").value
+    if (buscar == "Basico"){
+   panel.innerHTML = "Drone DJI PHANTOM 4 RTK + 2 Baterias"
+    }
+    if (buscar == "Standar"){
+        panel.innerHTML = "Drone DJI Mavic Mini 2 Single Cámara 4K 30fps 10km Alcance Estabilizador de 3 Ejes"
+         }
+         if (buscar == "Premium"){
+            panel.innerHTML = "Drone DJI Mavic Air 2S Fly More Combo 3 Baterías Cámara 5.4K HDR APAS 4.0"
+             }
+             else{
+                panel.innerHTML = "No se encontraron resultados"
+             }
+}
