@@ -93,10 +93,11 @@
 
         <section class="container my-5 text-center">
             <h2 class="text-center display-2">Busca tu dron</h2>
-            <input type="text" id="formulario" class="form-control my-2">
-            <button class="btn btn-primary mb-2" id="boton">Buscar</button>
-            <ul id="resultado">
-            </ul>
+            <input type="text" id="dronBuscado" class="form-control my-2">
+            <button class="btn btn-primary mb-2" id="buscador">Buscar</button>
+            <article class="row text-center align-items-center justify-content-center centrarCards my-5" id="resultado">
+
+            </article>
         </section>
         <section class="container my-5">
             <h3 class="text-center display-4 my-4 ">Conoce nuestros diferentes diseños</h3>
@@ -113,9 +114,6 @@
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body bg-black d-flex justify-content-center">
-                        <img src="" alt="imagen del logo de " class=" w-50">
-                    </div>
                     <form id="formModalLogin">
                         <div class="my-3 mx-5">
                             <label for="emailModal" class="col-form-label">Correo electronico</label>
@@ -128,9 +126,8 @@
                         </div>
                     </form>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button type="button" class="btn btn-dark text-light fs-4" id="btnLogin"> <a
-                                href="index.html">Iniciar
-                                sesion</a></button>
+                        <button type="button" class="btn btn-dark text-light fs-4" id="btnLogin">Iniciar
+                            sesion</button>
                     </div>
                     <a href="pages/registro.html" class="card-link text-center">Registrate</a>
                 </div>
